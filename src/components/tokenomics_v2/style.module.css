@@ -1,0 +1,23 @@
+.tokenomics {
+  border: 3px solid var(--color-charleston);
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  box-sizing: content-box;
+}
+
+.tokenomcis-canvas {
+
+}
+
+.tokenomics-img {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%; top: 50%;
+}

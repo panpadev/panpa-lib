@@ -1,0 +1,110 @@
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  backdrop-filter: blur(4px);
+  background-color: #0080ff09;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .3s ease;
+  animation: blur .3s ease;
+}
+
+@keyframes blur {
+  from {
+    backdrop-filter: blur(1px);
+  }
+
+  to {
+    backdrop-filter: blur(4px);
+  }
+}
+
+.modalclosed {
+  opacity: 0;
+}
+
+.modaldeleted {
+  display: none;
+}
+
+.modal-box {
+  width: 600px;
+  background-color: var(--color-charleston);
+  padding: 3rem;
+  border-radius: var(--border-radius-larger);
+  text-align: center;
+  color: white;
+  transition: all .3s ease;
+  animation: scale .3s ease;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0.93);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .modal-box {
+    width: 100%; height: 100%;
+    border-radius: 0;
+    padding: 2rem;
+  }
+}
+
+.modal-boxclosed {
+  transform: scale(.93);
+}
+
+.modal-box-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box-icon > svg {
+  width: 120px; height: 120px;
+  color: var(--color-azure);
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-box-title {
+  margin-top: 1rem;
+  font-size: 23px;
+}
+
+.modal-box-desc {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+}
+
+.modal-box-desc > a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+}
+
+.modal-box-button {
+  background-color: var(--color-azure);
+  padding: .8rem 3.5rem;
+  border-radius: var(--border-radius);
+  font-size: 18px; font-weight: 600;
+  cursor: pointer;
+  color: white;
+  margin-top: 3rem;
+  box-shadow: var(--shadow-azure);
+}
+
+@media only screen and (max-width: 650px) {
+  .modal-box-button {
+    padding: .8rem 1rem;
+    width: 100%;
+  }
+}

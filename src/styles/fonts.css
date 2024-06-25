@@ -1,0 +1,45 @@
+@font-face {
+  src: url('/fonts/RubikDoodleShadow-Regular.woff2');
+  font-family: "Rubik Doodle Shadow", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  src: url('/fonts/BungeeShade-Regular.woff2');
+  font-family: "Bungee Shade", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  src: url('/fonts/Chewy-Regular.woff2');
+  font-family: "Chewy", system-ui;
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  src: url('/fonts/Kalam-Light.woff2');
+  font-family: "Kalam", cursive;
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url('/fonts/Kalam-Regular.woff2');
+  font-family: "Kalam", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url('/fonts/Kalam-Bold.woff2');
+  font-family: "Kalam", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

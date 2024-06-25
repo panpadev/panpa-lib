@@ -1,0 +1,138 @@
+.roadmap {
+  position: relative;
+  width: 900px;
+  padding: 1rem;
+  background-color: var(--color-gunmetal);
+  color: var(--color-grey);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-large);
+}
+
+@media only screen and (max-width: 950px) {
+  .roadmap {
+    width: 100%;
+  }
+}
+
+.roadmap-midline {
+  position: absolute;
+  left: 50%; top: 0;
+  height: 100%;
+  transform: translate(-50%, 0);
+  border-left: 1px solid;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+@media only screen and (max-width: 650px) {
+  .roadmap-midline {
+    display: none;
+  }
+}
+
+.roadmap-section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media only screen and (max-width: 650px) {
+  .roadmap-section {
+    margin-top: 1rem;
+  }
+}
+
+.roadmap-sectionright {
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 650px) {
+  .roadmap-sectionright {
+    justify-content: flex-start;
+  }
+}
+
+.roadmap-section-box {
+  box-shadow: var(--shadow-black);
+  padding: 1rem;
+  width: calc(50% - 2rem);
+  background-color: white;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 1s ease;
+  opacity: 0;
+  background-color: var(--color-onyx);
+}
+
+@media only screen and (max-width: 650px) {
+  .roadmap-section-box {
+    width: 100%;
+  }
+}
+
+.roadmap-section-boxanimationleft {
+  animation: animationleft 1s ease;
+  opacity: 1;
+}
+
+@media only screen and (max-width: 650px) {
+  .roadmap-section-boxanimationleft {
+    animation: animationright 1s ease;
+  }  
+}
+
+@keyframes animationleft {
+  from {
+    transform: translateX(-200px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.roadmap-section-boxanimationright {
+  animation: animationright 1s ease;
+  opacity: 1;
+}
+
+
+@keyframes animationright {
+  from {
+    transform: translateX(200px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.roadmap-section-box-title {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+.roadmap-section-box-item {
+  margin-top: .6rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.roadmap-section-box-item-icon {
+  margin-right: .4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-yellow);
+}
+
+.roadmap-section-box-item-iconfinished {
+  color: var(--color-green);
+}
+
+.roadmap-section-box-item-icon > svg  {
+  width: 16px; height: 16px;
+}
+

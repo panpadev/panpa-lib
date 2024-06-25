@@ -1,0 +1,76 @@
+:root {
+  --max-width: 1100px;
+  --border-radius: 6px;
+  --border-radius-small: 6px;
+  --border-radius-large: 9px;
+  --border-radius-larger: 16px;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  /* components */
+  --comp-aside-width: 230px;
+
+  /* shadows */
+  --shadow-azure: #0080ff9a 0px 0px 12px;
+  --shadow-black: #0000002f 0px 0px 14px 0px;
+  --shadow-yellow: #cfc64783 0px 0px 12px;
+  --shadow-paradise: #ec365d70 0px 0px 12px;
+
+  /* colors */
+
+  /* green */
+  --color-jade: #00A86B;
+  
+  /* grey */
+  --color-charleston: #24292E;
+  --color-gunmetal: #2B3137;
+  --color-onyx: #343A41;
+  --color-arsenic: #3B4248;
+
+  /* red/pink */
+  --color-paradise: #EC365E;
+  --color-rouge-red: #E24666;
+  --color-thulian: #DE6FA1;
+  --color-american-red: #B31942;
+  --color-cardinal: #C41E3A;
+  --color-temptation: #B82650;
+  --color-vermillion: #E34234;
+  --color-light-maroon: #D03D56;
+  --color-arabian-red: #A30B2E;
+  --color-peach-fuzz: #ffbe98;
+  --color-peach-fuzz: #ffbe98;
+
+  /* blue */
+  --color-azure: #0080FF;
+
+  /* purple */
+  --color-vivid-purple: #6A0F8E;
+  --color-veronica: #A020F0;
+  --color-purple-rebecca: #663399;
+
+  /* yellow/white */
+  --color-cream: #FFFDD0;
+
+  --color-purple: rgb(237, 39, 255);
+  --color-white: rgb(255, 255, 255);
+  --color-grey: rgba(255, 255, 255, 0.7);
+  --color-green: rgb(75, 202, 75);
+  --color-red:  rgb(255, 39, 86);
+  --color-yellow: #cfc547;
+  --color-blue: rgb(39, 125, 255);
+}

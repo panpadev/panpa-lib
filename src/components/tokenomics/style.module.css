@@ -1,0 +1,87 @@
+.tokenomics {
+  padding: 2rem;
+  width: 900px;
+  background-color: var(--color-gunmetal);
+  border-radius: var(--border-radius-large);
+}
+
+@media only screen and (max-width: 950px) {
+  .tokenomics {
+    width: 100%;
+  }
+}
+
+.tokenomics-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 22px;
+}
+
+.tokenomics-bottom {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@media only screen and (max-width: 950px) {
+  .tokenomics-bottom {
+    display: block;
+  }
+}
+
+.tokenomics-bottom-piechart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tokenomics-bottom-bars {
+  margin-left: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 950px) {
+  .tokenomics-bottom-bars {
+    margin-left: 0rem;
+    margin-top: 2rem;
+    width: 100%;
+    display: block;
+  }
+}
+
+.tokenomics-bottom-bars-bar {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  width: calc(50% - 2rem);
+}
+
+@media only screen and (max-width: 950px) {
+  .tokenomics-bottom-bars-bar {
+    margin-left: 0;
+    width: auto
+  }
+}
+
+.tokenomics-bottom-bars-bar-title {
+  margin-bottom: .2rem;
+  font-size: 15px;
+}
+
+.tokenomics-bottom-bars-bar-progress {
+  position: relative;
+  background-color: var(--color-charleston);
+  border-radius: 8px;
+  height: 17px;
+  overflow: hidden;
+}
+
+.tokenomics-bottom-bars-bar-progress-load {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+}
+

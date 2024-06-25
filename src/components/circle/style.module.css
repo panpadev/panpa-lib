@@ -1,0 +1,27 @@
+.circle {
+  position: relative;
+  background-color: var(--color-gunmetal);
+}
+
+.circle-canvaspath {
+  transform: rotateZ(-90deg);
+  position: absolute;
+  left: 0; top: 0;
+}
+
+.circle-canvas {
+  transform: rotateZ(-90deg);
+}
+
+.circle-percentage {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 52px); height: calc(100% - 52px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px; font-weight: 600;
+  border-radius: 50%;
+}

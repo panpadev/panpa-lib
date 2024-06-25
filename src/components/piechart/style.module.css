@@ -1,0 +1,14 @@
+.piechart {
+  position: relative;
+}
+
+.piechart-header {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%; top: 50%;
+  font-weight: 600;
+}
+
+.piechart-canvas {
+  transform: rotateZ(-90deg);
+}

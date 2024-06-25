@@ -1,0 +1,339 @@
+.seedsale {
+  padding: 3rem;
+  color: white;
+  width: 600px;
+  border-radius: var(--border-radius-large);
+  /*  box-shadow: var(--shadow-black);*/
+  background-color: var(--color-gunmetal);
+}
+
+@media screen and (max-width: 650px) {
+  .seedsale {
+    padding: 2rem 1rem;
+    width: 100%;
+  }
+}
+
+.seedsale-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-paradise);
+  font-weight: 600; font-size: 18px;
+}
+
+.seedsale-countdown {
+  text-align: center;
+}
+
+.seedsale-countdown-title {
+  font-size: 30px; font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.seedsale-countdown-values {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.seedsale-countdown-values-box {
+  background-color: var(--color-onyx);
+  border-radius: var(--border-radius);
+  margin: 0 1rem;
+  width: 60px; height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px; font-weight: 600;
+}
+
+@media screen and (max-width: 650px) {
+  .seedsale-countdown-values-box {
+    width: 45px; height: 45px;
+    font-size: 22px;
+  }
+}
+
+.seedsale-countdown-values-dots {
+  font-size: 18px; font-weight: 600;
+}
+
+@media screen and (max-width: 650px) {
+  .seedsale-countdown-values-box {
+    width: 45px; height: 45px;
+    margin: 0 .8rem;
+  }
+}
+
+.seedsale-amounts {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.seedsale-bar {
+  margin-top: .2rem;
+  height: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-onyx);
+}
+
+.seedsale-bar-progress {
+  position: absolute;
+  left: 0; top: 0;
+  width: 0; height: 100%;
+  background-color: var(--color-paradise);
+  transition: all .8s ease;
+  box-shadow: var(--shadow-paradise);
+}
+
+.seedsale-bar-progress-reflection {
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: all .3s ease;
+  position: absolute;
+  left: 0; top: 0;
+  width: 0; height: 100%;
+  animation: reflection 2.2s infinite ease;
+}
+
+@keyframes reflection {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.01);
+  }
+}
+
+.seedsale-knobarea {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seedsale-knobarea-knob {
+  position: relative;
+  width: 270px; height: 16px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .seedsale-knobarea-knob {
+    width: 100%;
+  }
+}
+
+.seedsale-knobarea-knob-amounts {
+  position: absolute;
+  left: 0; top: -34px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.seedsale-knobarea-knob-line {
+  background-color: var(--color-onyx);
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translate(0, -50%);
+  height: 3px; width: 100%;
+}
+
+.seedsale-knobarea-knob-amounts-min {
+
+}
+
+.seedsale-knobarea-knob-amounts-max {
+
+}
+
+@media screen and (max-width: 950px) {
+  .seedsale-knobarea-knob-amounts-max-label {
+    right: 0; top: -10px;
+    left: auto;
+  }  
+}
+
+.seedsale-knobarea-knob-edge {
+  position: absolute;
+  left: 0; top: 0;
+  width: 3px; height: 100%;
+  background-color: var(--color-onyx);
+  border-radius: 3px;
+  transform: translate(-50%, 0);
+}
+
+.seedsale-knobarea-knob-edge1 { left: 0; }
+.seedsale-knobarea-knob-edge2 { left: 25%; }
+.seedsale-knobarea-knob-edge3 { left: 50%; }
+.seedsale-knobarea-knob-edge4 { left: 75%; }
+.seedsale-knobarea-knob-edge5 { left: 100%; }
+
+.seedsale-knobarea-knob-cursor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.seedsale-knobarea-knob-cursor-button {
+  width: 24px; height: 24px;
+}
+
+.seedsale-knobarea-knob-cursor-amount {
+  position: absolute;
+  left: 50%; top: 100%;
+  font-size: 18px;
+  transform: translate(-50%, 0);
+  white-space: nowrap;
+}
+
+.seedsale-knobarea-knob-cursor-pointer {
+  position: absolute;
+  left: -.4rem; top: calc(80%);
+  width: 40px; height: 40px;
+  color: white;
+  z-index: 1;
+  visibility: hidden;
+  animation: knob-pointer 2.5s ease;
+}
+
+@keyframes knob-pointer {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(40px, 0);
+    visibility: hidden;
+  }
+}
+
+.seedsale-inputarea {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seedsale-inputareasecond {
+  margin-top: 0;
+}
+
+.seedsale-inputarea-ctr {
+  width: 270px;
+  background-color: var(--color-charleston);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 650px) {
+  .seedsale-inputarea-ctr {
+    width: 100%;
+  }
+}
+
+.seedsale-inputarea-ctr-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spin 1s infinite linear;
+  margin: 0 1rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateZ(0rad);
+  }
+
+  to {
+    transform: rotateZ(6.28rad);
+  }
+}
+
+.seedsale-inputarea-ctr-loading > svg {
+  width: 18px; height: 18px;
+}
+
+.seedsale-inputarea-ctr-input {
+  display: block;
+  width: 100%; height: 100%;
+  font-size: 18px;
+  color: white;
+  background-color: transparent;
+  padding: .6rem;
+}
+
+.seedsale-inputarea-ctr-inputerror {
+  color: var(--color-red);
+}
+
+.seedsale-inputarea-ctr-symbol {
+  margin: 0 .6rem;
+  font-size: 18px;
+}
+
+.seedsale-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.seedsale-arrow > svg {
+  width: 32px; height: 32px;
+}
+
+.seedsale-buttonarea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.seedsale-buttonarea-button {
+  padding: .7rem 2rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-paradise);
+  box-shadow: var(--shadow-paradise);
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .seedsale-buttonarea-button {
+    width: 100%;
+    padding: .7rem 0;
+  }
+}
+
+.seedsale-buttonarea-buttondisabled {
+  background-color: var(--color-charleston);
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: auto;
+}

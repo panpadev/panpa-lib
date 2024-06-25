@@ -1,0 +1,22 @@
+{
+  "name": "panpa-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "pm2": "pm2 start npm --name panpa-ui -- start -- --port 3000 -H 127.0.0.1"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "classnames": "^2.5.1",
+    "moralis": "^2.26.1",
+    "next": "14.2.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "web3": "^4.9.0"
+  }
+}

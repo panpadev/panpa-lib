@@ -1,0 +1,152 @@
+.footer {
+  background-color: var(--color-paradise);
+  min-height: 100vh;
+  color: white;
+  border-top: 3px solid black;
+  position: relative;
+}
+
+.footer-header {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 98px; font-weight: 600;
+  color: var(--color-peach-fuzz);
+  color: white;
+  font-family: "Rubik Doodle Shadow", system-ui;
+  transition: all .4s ease;
+  opacity: 0;
+  transform: scale(.7);
+}
+
+.footer-desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .4s ease;
+  opacity: 0;
+  transform: scale(.7);
+}
+
+.footer-desc-inner {
+  width: 600px;
+  text-align: center;
+  color: white;
+  color: var(--color-peach-fuzz);
+  margin-top: 2rem;
+  font-size: 30px; font-weight: bolder;
+}
+
+@media screen and (max-width: 650px) {
+  .footer-desc-inner {
+    width: auto;
+  }
+}
+
+.footer-bottom {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: all .4s ease;
+  opacity: 0;
+  transform: scale(.7);
+}
+
+@media screen and (max-width: 650px) {
+  .footer-bottom {
+    position: static;
+    margin-top: 5rem;
+  }
+}
+
+.footer-bottom-inner {
+  width: 950px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 1150px) {
+  .footer-bottom-inner {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer-bottom-inner {
+    display: block;
+  }
+}
+
+.footer-bottom-inner-left {
+
+}
+
+.footer-bottom-inner-left-buy {
+  border: 3px solid var(--color-charleston);
+  padding: 1rem 2rem;
+  font-size: 30px;
+  color: var(--color-charleston);
+  background-color: var(--color-peach-fuzz);
+  display: block;
+  text-align: center;
+}
+
+.footer-bottom-inner-left-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.footer-bottom-inner-left-socials-link {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .8rem;
+  background-color: var(--color-charleston);
+  margin: 0 .5rem;
+  border-radius: 50%;
+}
+
+.footer-bottom-inner-left-socials-link > svg {
+  width: 30px; height: 30px;
+  color: white;
+}
+
+.footer-bottom-inner-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 650px) {
+  .footer-bottom-inner-right {
+    margin-top: 5rem;
+  }
+}
+
+
+.footer-bottom-inner-right-img {
+  height: 450px;
+  transform: scaleX(-1);
+}
+
+@media screen and (max-width: 650px) {
+  .footer-bottom-inner-right-img {
+    width: 90%;
+    height: auto;
+  }
+}
+
+
+
+/* COMMON CLASSES */
+.scrollbounce {
+  opacity: 1;
+  transform: scale(1);
+}
+

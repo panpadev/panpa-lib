@@ -1,0 +1,17 @@
+.main {
+  margin-left: var(--comp-aside-width);
+  min-height: 100vh;
+  background-color: var(--color-charleston);
+  padding: 1rem;
+}
+
+@media screen and (max-width: 650px) {
+  .main {
+    margin-left: 0;
+    padding: 0;
+  }
+}
+
+.mainsidebarclosed {
+  margin-left: 0;
+}
