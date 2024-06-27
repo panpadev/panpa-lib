@@ -3016,7 +3016,7 @@ class Swap extends React.Component {
         decimals: this.state.pay_decimals,
         chain_id: this.state.pay_chain_id,
       });
-    }, 1500);
+    }, 500);
 
     setTimeout(() => {
       this.on_click_receive_selector({
@@ -3027,7 +3027,7 @@ class Swap extends React.Component {
         decimals: this.state.receive_decimals,
         chain_id: this.state.receive_chain_id,
       });
-    }, 1600);
+    }, 600);
 
     // place initial tokens from coingecko
 

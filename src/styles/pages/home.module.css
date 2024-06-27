@@ -1,45 +1,10 @@
 /* SECTION FACTORY */
 .sectionfactory {
-  border-top: 3px solid black;
   min-height: 100vh;
   background-color: var(--color-paradise);
-  padding-bottom: 16rem;
-}
-
-
-.sectionfactory-header {
-  text-align: center;
-  margin-top: 6rem;
-  font-size: 60px; font-weight: bolder;
-  color: var(--color-peach-fuzz);
-}
-
-.sectionfactory-factory {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
-}
-
-.sectionfactory-docs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sectionfactory-docs-link {
-  display: block;
-  color: white;
-  font-size: 20px;
-  margin-top: 10rem;
-  text-align: center;
-  width: 600px;
-}
-
-@media screen and (max-width: 650px) {
-  .sectionfactory-docs-link {
-    width: 100%;
-  }
 }
 
 
@@ -47,137 +12,27 @@
 .sectionswap {
   min-height: 100vh;
   background-color: var(--color-paradise);
-  padding-bottom: 15rem;
-}
-
-.sectionswap-header {
-  text-align: center;
-  padding-top: 6rem;
-  font-size: 50px; font-weight: bolder;
-  color: var(--color-peach-fuzz);
-}
-
-.sectionswap-desc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all .4s ease;
-  opacity: 0;
-  transform: scale(.7);
-}
-
-.sectionswap-desc-inner {
-  width: 600px;
-  text-align: center;
-  color: white;
-  margin-top: 2rem;
-  font-size: 30px; font-weight: bolder;
-}
-
-@media screen and (max-width: 650px) {
-  .sectionswap-desc-inner {
-    width: auto;
-  }
-}
-
-.sectionswap-swap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10rem;
-}
-
-.sectionswap-docs {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.sectionswap-docs-link {
-  cursor: default;
-  display: block;
-  color: white;
-  font-size: 20px;
-  margin-top: 10rem;
-  text-align: center;
-}
-
 
 /* SECTION AUDIT */
 .sectionaudit {
   min-height: 100vh;
   background-color: var(--color-paradise);
-  padding-bottom: 16rem;
-  position: relative;
-}
-
-.sectionaudit-header {
-  text-align: center;
-  padding-top: 6rem;
-  font-size: 50px; font-weight: bolder;
-  color: var(--color-peach-fuzz);
-
-}
-
-.sectionaudit-audit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10rem;
-}
-
-.sectionaudit-docs {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.sectionaudit-docs-link {
-  display: block;
-  color: white;
-  font-size: 20px;
-  margin-top: 10rem;
-  text-align: center;
-}
 
 /* SECTION GRAPH */
 .sectiongraph {
   min-height: 100vh;
   background-color: var(--color-paradise);
-  padding-bottom: 16rem;
-  position: relative;
-}
-
-.sectiongraph-header {
-  text-align: center;
-  padding-top: 6rem;
-  font-size: 50px; font-weight: bolder;
-  color: var(--color-peach-fuzz);
-}
-
-.sectiongraph-audit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10rem;
-}
-
-.sectiongraph-docs {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.sectiongraph-docs-link {
-  display: block;
-  color: white;
-  font-size: 20px;
-  margin-top: 10rem;
-  text-align: center;
-}
-
-/* COMMON CLASSES */
-.scrollbounce {
-  opacity: 1;
-  transform: scale(1);
-}

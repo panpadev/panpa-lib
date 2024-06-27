@@ -66,88 +66,22 @@ class Home extends React.Component {
 
         <BlankLayout pathname={this.props.pathname}>
           <section className={cn(style['sectionfactory'])}>
-            <h2 className={cn(style['sectionfactory-header'])}>
-              PANPA FACTORY
-            </h2>
-
-            <div
-              ref={this.ref_factory}
-              className={cn(style['sectionfactory-factory'])}
-            >
-              <Factory />
-            </div>
-
-            <div className={cn(style['sectionfactory-docs'])}>
-              <a
-                target="_blank"
-                className={cn(style['sectionfactory-docs-link'])}
-                href="https://github.com/panpadev/panpa-api/blob/main/contracts/StandardToken.sol"
-              >
-                SEE THE SOURCE CODE OF THE CONTRACT THAT OUR FACTORY DEPLOY TO
-                VIRTUAL MACHINE, ITS THE STANDARD TOKEN WITH ALL THE REQUIRED
-                FUNCTIONS
-              </a>
-            </div>
+            <Factory />
           </section>
 
           <section className={cn(style['sectionswap'])}>
-            <h2 className={cn(style['sectionswap-header'])}>PANPA SWAP</h2>
-
-            <div className={cn(style['sectionswap-swap'])}>
-              <Swap title="Panpa Swap" />
-            </div>
-
-            <div className={cn(style['sectionswap-docs'])}>
-              <a
-                className={cn(style['sectionswap-docs-link'])}
-                target="_blank"
-                href="https://docs.panpa.dev"
-              >
-                SUPPORTS MORE THEN 10,000 TOKENS ACROSS 8 DIFFERENT CHAINS
-              </a>
-            </div>
+            <Swap title="Panpa Swap" />
           </section>
 
           <section className={cn(style['sectionaudit'])}>
-            <h2 className={cn(style['sectionaudit-header'])}>AUDIT</h2>
-
-            <div
-              ref={this.ref_audit}
-              className={cn(style['sectionaudit-audit'])}
-            >
-              <Audit
-                address={this.state.audit_address}
-                chainId={this.state.audit_chain_id}
-              />
-            </div>
-
-            <div className={cn(style['sectionaudit-docs'])}>
-              <a
-                className={cn(style['sectionaudit-docs-link'])}
-                target="_blank"
-                href="#"
-              >
-                ANALYSE ALL THE PARAMERTS OF THE TOKENS AMONG ALL THE CHAINS
-              </a>
-            </div>
+            <Audit
+              address={this.state.audit_address}
+              chainId={this.state.audit_chain_id}
+            />
           </section>
 
           <section className={cn(style['sectiongraph'])}>
-            <h2 className={cn(style['sectiongraph-header'])}>GRAPH</h2>
-
-            <div className={cn(style['sectiongraph-audit'])}>
-              <Graph />
-            </div>
-
-            <div className={cn(style['sectiongraph-docs'])}>
-              <a
-                className={cn(style['sectiongraph-docs-link'])}
-                target="_blank"
-                href="#"
-              >
-                DISPLAY TOKEN'S PRICE ACTION ACROSS TIME
-              </a>
-            </div>
+            <Graph />
           </section>
         </BlankLayout>
       </>
