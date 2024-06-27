@@ -62,7 +62,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <Head title="PANPA - Wise Developer" />
+        <Head title="PANPA Library" />
 
         <BlankLayout pathname={this.props.pathname}>
           <section className={cn(style['sectionfactory'])}>
@@ -70,14 +70,11 @@ class Home extends React.Component {
           </section>
 
           <section className={cn(style['sectionswap'])}>
-            <Swap title="Panpa Swap" />
+            <Swap />
           </section>
 
           <section className={cn(style['sectionaudit'])}>
-            <Audit
-              address={this.state.audit_address}
-              chainId={this.state.audit_chain_id}
-            />
+            <Audit />
           </section>
 
           <section className={cn(style['sectiongraph'])}>
