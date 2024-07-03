@@ -31,7 +31,6 @@ class Factory extends React.Component {
       // common
       loading: false,
       error: '',
-      __contract: '',
 
       // wallet
       wallet_accounts: [],
@@ -68,8 +67,6 @@ class Factory extends React.Component {
       token_img: '/images/token.png',
       url_explorer: 'https://testnet.bscscan.com',
     };
-
-    this.FEE_RECEIVER = '0xd9716d672253B04BedC57Fa4bb5053acD3ccd507';
 
     this.FEES = {
       1: 0, // 0.01 ETH 10000000000000000
@@ -839,7 +836,7 @@ class Factory extends React.Component {
           this.state.token_symbol,
           Number(this.state.token_decimals),
           supply,
-          this.FEE_RECEIVER,
+          this.props.feeReceiver,
           FEE,
         ],
       });
@@ -1007,13 +1004,6 @@ class Factory extends React.Component {
   }
 
   init() {
-    this.setState({
-      ...this.state,
-
-      // common
-      __contract: window.location.origin,
-    });
-
     this.listen_wallet();
   }
 
@@ -1225,6 +1215,8 @@ class Factory extends React.Component {
   }
 }
 
-var __contract = config.url_ui;
+Factory.defaultProps = {
+  feeReceiver: '0x203E89c8B62EA925F127Ef1c88544cC16522A65F',
+};
 
 export default Factory;

@@ -74,7 +74,10 @@ class Home extends React.Component {
           </section>
 
           <section className={cn(style['sectionaudit'])}>
-            <Audit />
+            <Audit
+              address="0xfED87d9218f2E609801E453E91D2BcA446228b94"
+              chainId={1}
+            />
           </section>
 
           <section className={cn(style['sectiongraph'])}>
