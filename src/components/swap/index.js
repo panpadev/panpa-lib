@@ -2317,9 +2317,9 @@ class Swap extends React.Component {
       sell_amount = BigInt(sell_amount).toString();
 
       // try with takerAddress to see errors
-      const url_query_quote = `?buyToken=${this.state.receive_address}&sellToken=${this.state.pay_address}&sellAmount=${sell_amount}&chain_id=${this.state.wallet_chain_id}&takerAddress=${this.state.wallet_accounts[0]}`;
+      const url_quote_query = `?buyToken=${this.state.receive_address}&sellToken=${this.state.pay_address}&sellAmount=${sell_amount}&chain_id=${this.state.wallet_chain_id}&takerAddress=${this.state.wallet_accounts[0]}`;
 
-      const url_quote = this.props.baseURL + '/quote' + url_query_quote;
+      const url_quote = this.props.baseURL + '/quote' + url_quote_query;
       let res_quote = null;
 
       /*
@@ -2347,7 +2347,7 @@ class Swap extends React.Component {
       while (true) {
         res_quote = await this.fetch_0x(url_quote);
 
-        if (res_quote.data) {
+        if (typeof res_quote === 'object') {
           break;
         }
 
@@ -2491,10 +2491,7 @@ class Swap extends React.Component {
         gasPrice: res_quote.data.gasPrice,
       };
 
-      console.log(res_quote.data);
-
       // adding 20%-50% buffer to estimatedGas is recommended to avoid gas problems
-
       const gas_buffer = 1.35; // TODO: edit gas buffer
 
       res_quote.data.gas = parseInt(
@@ -2509,8 +2506,7 @@ class Swap extends React.Component {
         .sendTransaction(res_quote.data)
         .then((receipt) => {
           /*
-          
-                    this.context.set_state({
+          this.context.set_state({
             ...this.context.state,
 
             ui_toasts: [
@@ -2521,7 +2517,8 @@ class Swap extends React.Component {
                 created_at: new Date(),
               },
             ],
-          });*/
+          });
+          */
 
           this.setState({
             ...this.state,
@@ -3007,49 +3004,43 @@ class Swap extends React.Component {
     // web3 wallet listen bindings
     this.listen_wallet();
 
-    setTimeout(() => {
-      this.on_click_pay_selector({
-        address: this.state.pay_address,
-        img: this.state.pay_img,
-        symbol: this.state.pay_symbol,
-        name: this.state.pay_name,
-        decimals: this.state.pay_decimals,
-        chain_id: this.state.pay_chain_id,
-      });
-    }, 500);
+    this.on_click_pay_selector({
+      address: this.state.pay_address,
+      img: this.state.pay_img,
+      symbol: this.state.pay_symbol,
+      name: this.state.pay_name,
+      decimals: this.state.pay_decimals,
+      chain_id: this.state.pay_chain_id,
+    });
 
-    setTimeout(() => {
-      this.on_click_receive_selector({
-        address: this.state.receive_address,
-        img: this.state.receive_img,
-        symbol: this.state.receive_symbol,
-        name: this.state.receive_name,
-        decimals: this.state.receive_decimals,
-        chain_id: this.state.receive_chain_id,
-      });
-    }, 600);
+    this.on_click_receive_selector({
+      address: this.state.receive_address,
+      img: this.state.receive_img,
+      symbol: this.state.receive_symbol,
+      name: this.state.receive_name,
+      decimals: this.state.receive_decimals,
+      chain_id: this.state.receive_chain_id,
+    });
 
     // place initial tokens from coingecko
 
     const url_tokens =
       config.url_api + `/v1/tokens?chain_id=${this.state.wallet_chain_id}`;
 
-    setTimeout(() => {
-      axios
-        .get(url_tokens)
-        .then((res) => {
-          this.setState({
-            ...this.state,
+    axios
+      .get(url_tokens)
+      .then((res) => {
+        this.setState({
+          ...this.state,
 
-            // pay token
-            pay_tokens: res.data,
+          // pay token
+          pay_tokens: res.data,
 
-            // receive token
-            receive_tokens: res.data,
-          });
-        })
-        .catch((err) => {});
-    }, 1000);
+          // receive token
+          receive_tokens: res.data,
+        });
+      })
+      .catch((err) => {});
   }
 
   componentDidMount() {
