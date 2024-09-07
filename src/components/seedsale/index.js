@@ -4,7 +4,6 @@ import React from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import cn from 'classnames';
-import Moralis from 'moralis';
 
 // COMPONENTS
 import Icon_button from '../icons/button';
@@ -25,15 +24,6 @@ import UTILS_API from '../../utils/api.js';
 // STYLES
 import style from './style.module.css';
 
-// SERVER SIDE
-export async function getServerSideProps({ req }) {
-  return {
-    props: {
-      pathname: req.url,
-    },
-  };
-}
-
 class Seedsale extends React.Component {
   static contextType = Context;
 
@@ -48,17 +38,17 @@ class Seedsale extends React.Component {
       start_time: new Date(new Date().valueOf() + 10000),
       end_time: new Date(new Date().valueOf() + 30000),
       contributers: 0,
-      total_amount: 25855855, // total token amount to be sold
+      total_amount: 18468469, // total token amount to be sold
       total_sold: 0, // total token sold
       total_buy: 0,
       min_buy: 0.01, // in native coin e.g. ETH
       max_buy: 0.1, // in native coin e.g. ETH
 
-      token_address: '0xEe38AD08839E1B05d2D99CBf0164DD317bEEb26e',
+      token_address: '0xC002aead3C5A93449b05615786F4a454764EF4F1',
       token_chain_id: 11155111,
       token_decimals: 18,
       token_supply: 369369369,
-      token_price: 0.000676, // seed sale price
+      token_price: 0.000333, // seed sale price
       token_name: 'Panpa',
       token_symbol: 'PANPA',
       token_img: '/favicon.ico',
@@ -466,6 +456,7 @@ class Seedsale extends React.Component {
           type: 'function',
         },
       ],
+      token_bytecode: '',
 
       wallet_accounts: [],
       wallet_chain_id: 1,
@@ -490,9 +481,10 @@ class Seedsale extends React.Component {
     };
     this.MIN_BUY = this.state.min_buy;
     this.MAX_BUY = this.state.max_buy;
+    this.API_KEY_MORALIS =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImVlZmI2ZmJmLTljZGItNGQ5NS1iNzlkLTA3Yjc0ZDRiZTQ3OSIsIm9yZ0lkIjoiMzgyNjA4IiwidXNlcklkIjoiMzkzMTM0IiwidHlwZUlkIjoiOTU4OGZjNmUtZmQ4MC00YTQ0LWE5MTMtNDIyNjRjOGY3OWEwIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MTAzMjk5NjQsImV4cCI6NDg2NjA4OTk2NH0.4T3eih5-iG2su_oLd6nOQazZq5N9FyL5QjgkgpjpGI8';
 
     // functions
-
     this.update_time = this.update_time.bind(this);
     this.update_balance = this.update_balance.bind(this);
     this.on_mouse_move_knob = this.on_mouse_move_knob.bind(this);
@@ -523,11 +515,6 @@ class Seedsale extends React.Component {
 
     const web3 = new Web3(window.ethereum);
     const accounts = await wallet_connect();
-
-    await Moralis.start({
-      apiKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImVlZmI2ZmJmLTljZGItNGQ5NS1iNzlkLTA3Yjc0ZDRiZTQ3OSIsIm9yZ0lkIjoiMzgyNjA4IiwidXNlcklkIjoiMzkzMTM0IiwidHlwZUlkIjoiOTU4OGZjNmUtZmQ4MC00YTQ0LWE5MTMtNDIyNjRjOGY3OWEwIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MTAzMjk5NjQsImV4cCI6NDg2NjA4OTk2NH0.4T3eih5-iG2su_oLd6nOQazZq5N9FyL5QjgkgpjpGI8',
-    });
 
     // transactions from mongodb
     const res_seed_sales_get = await axios.get(
@@ -561,29 +548,36 @@ class Seedsale extends React.Component {
 
       let res_hash = null;
       try {
-        res_hash = await Moralis.EvmApi.transaction.getTransaction({
-          chain: web3.utils.toHex(this.state.token_chain_id).toString(),
-          transactionHash: res_seed_sales_get.data[i].hash,
-        });
+        res_hash = await axios.get(
+          'https://deep-index.moralis.io/api/v2.2/transaction/' +
+            res_seed_sales_get.data[i].hash +
+            '?chain=' +
+            web3.utils.toHex(this.state.token_chain_id).toString(),
+          {
+            headers: {
+              'x-api-key': this.API_KEY_MORALIS,
+            },
+          }
+        );
       } catch (err) {
         continue;
       }
 
-      if (!Number(res_hash.raw.value)) {
+      if (!Number(res_hash.data.value)) {
         continue;
       }
 
       if (
-        new Date(res_hash.raw.block_timestamp).valueOf() <
+        new Date(res_hash.data.block_timestamp).valueOf() <
           this.state.start_time.valueOf() ||
-        new Date(res_hash.raw.block_timestamp).valueOf() >
+        new Date(res_hash.data.block_timestamp).valueOf() >
           this.state.end_time.valueOf() + 180000
       ) {
         //continue;
       }
 
       if (
-        res_hash.raw.to_address.toLowerCase() !==
+        res_hash.data.to_address.toLowerCase() !==
         this.state.wallet_sale_address.toLowerCase()
       ) {
         continue;
@@ -592,14 +586,21 @@ class Seedsale extends React.Component {
       transactions.push(res_seed_sales_get.data[i]);
     }
 
-    // send devc tokens to investors one by one with metamask
+    // send panpa tokens to investors one by one with metamask
     for (let i = 0; i < transactions.length; i++) {
-      const res_hash = await Moralis.EvmApi.transaction.getTransaction({
-        chain: web3.utils.toHex(this.state.token_chain_id).toString(),
-        transactionHash: transactions[i].hash,
-      });
+      const res_hash = await axios.get(
+        'https://deep-index.moralis.io/api/v2.2/transaction/' +
+          transactions[i].hash +
+          '?chain=' +
+          web3.utils.toHex(this.state.token_chain_id).toString(),
+        {
+          headers: {
+            'x-api-key': this.API_KEY_MORALIS,
+          },
+        }
+      );
 
-      // DEVC token transaction area
+      // PANPA token transaction area
       // this.CHAINS[this.state.token_chain_id]
       const usdc_address = config.blockchain_chains[1].usdc_address;
       const usdc_decimals = config.blockchain_chains[1].usdc_decimals;
@@ -626,7 +627,7 @@ class Seedsale extends React.Component {
       coin_price = 1 / coin_price;
 
       // Native coin amount that investors sent us
-      let coin_amount = Number(res_hash.raw.value);
+      let coin_amount = Number(res_hash.data.value);
       for (let i = 0; i < coin_decimals; i++) {
         coin_amount *= 0.1;
       }
@@ -657,7 +658,7 @@ class Seedsale extends React.Component {
 
       const res = await contract.methods
         .transfer(
-          res_hash.raw.from_address,
+          res_hash.data.from_address,
           BigInt(sale_token_amount).toString()
         )
         .send();
@@ -747,6 +748,7 @@ class Seedsale extends React.Component {
     this.ref_seconds.current.innerHTML = remaining_seconds;
   }
 
+  // fetches the remaining seed sale token in the seed sale wallet address then calculates the total tokens sold in the seed sale
   async update_balance(interval_id) {
     if (!window.ethereum) {
       clearInterval(interval_id);
@@ -1349,7 +1351,7 @@ class Seedsale extends React.Component {
       if (!this.CHAINS[Number(chain_id)]) {
         const chain_name = this.CHAINS[this.state.token_chain_id].name;
 
-        //this.ref_progress.current.style.width = '0%';
+        // this.ref_progress.current.style.width = '0%';
 
         const state = {
           ...this.state,
@@ -1421,6 +1423,7 @@ class Seedsale extends React.Component {
     this.setState(state);
   }
 
+  // calculates how many seed sale tokens user will get at the end of transaction with given native coin amount (e.g. ETH)
   async fetch_receive(pay_value) {
     // TODO: replace CHAINS with dynamic token state
     const coin_address = config.blockchain_chains[1].token_address;

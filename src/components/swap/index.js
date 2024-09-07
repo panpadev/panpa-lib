@@ -16,7 +16,7 @@ import Icon_loading from '../icons/loading.js';
 import config from '../../config';
 
 // CONTEXT
-//import { Context } from '../../context/index.js';
+import { Context } from '../../context/index.js';
 
 // UTILS
 import { fhandle, wallet_connect } from '../../utils/index.js';
@@ -405,9 +405,9 @@ class Swap extends React.Component {
       }
 
       // quote 0x.org  endpoint
-      const url = this.props.baseURL + '/quote' + url_query;
+      const url_quote = this.props.baseURL + '/quote' + url_query;
 
-      this.fetch_0x(url).then(async (res) => {
+      this.fetch_0x(url_quote).then(async (res) => {
         if (res === 'err-liquidity') {
           this.setState({
             ...this.state,
@@ -762,7 +762,7 @@ class Swap extends React.Component {
           pay_price: 0,
 
           // button
-          button_text: 'Not Authorized',
+          button_text: 'Not authorized',
           button_disabled: true,
         });
 
@@ -959,9 +959,9 @@ class Swap extends React.Component {
       }
 
       // Make a quote request to 0x.org
-      const url = this.props.baseURL + '/quote' + url_query;
+      const url_quote = this.props.baseURL + '/quote' + url_query;
 
-      this.fetch_0x(url).then(async (res) => {
+      this.fetch_0x(url_quote).then(async (res) => {
         if (res === 'err-liquidity') {
           this.setState({
             ...this.state,
@@ -2165,7 +2165,7 @@ class Swap extends React.Component {
 
         price = 1.0 / price;
 
-        const new_state = {
+        const state = {
           ...this.state,
 
           // common
@@ -2180,7 +2180,7 @@ class Swap extends React.Component {
           button_disabled: true,
         };
 
-        this.setState(new_state);
+        this.setState(state);
       });
 
       this.setState({
@@ -2220,16 +2220,14 @@ class Swap extends React.Component {
       });
 
       // TODO Warning: global context dependency
-      /**
-       * 
-       *       this.context.set_state({
+      /*
+      this.context.set_state({
         ...this.context.state,
 
         // wallet
         wallet_accounts: accounts,
         wallet_chain_id: Number(chain_id),
       });
-       * 
       */
     }
 
@@ -2483,14 +2481,6 @@ class Swap extends React.Component {
         }
       }
 
-      const transaction = {
-        from: this.state.wallet_accounts[0],
-        to: res_quote.data.to,
-        data: res_quote.data.data,
-        value: res_quote.data.value,
-        gasPrice: res_quote.data.gasPrice,
-      };
-
       // adding 20%-50% buffer to estimatedGas is recommended to avoid gas problems
       const gas_buffer = 1.35; // TODO: edit gas buffer
 
@@ -2519,6 +2509,8 @@ class Swap extends React.Component {
             ],
           });
           */
+
+          alert('Transaction successful');
 
           this.setState({
             ...this.state,
@@ -2563,7 +2555,6 @@ class Swap extends React.Component {
           }
 
           state.error = err.message;
-
           this.setState(state);
         });
     }
