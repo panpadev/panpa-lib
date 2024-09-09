@@ -70,7 +70,7 @@ class Home extends React.Component {
           </section>
 
           <section className={cn(style['sectionswap'])}>
-            <Swap />
+            <Swap title="Panpa Swap" />
           </section>
 
           <section className={cn(style['sectionaudit'])}>
